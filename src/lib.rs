@@ -14,7 +14,7 @@
 //! use bootsector::{list_partitions, open_partition, Options, Attributes};
 //!
 //! # fn go<R>(mut reader: R) -> io::Result<()>
-//! # where R: positioned_io2::ReadAt {
+//! # where R: positioned_io::ReadAt {
 //! // let reader = ...;
 //! let partitions = list_partitions(&mut reader, &Options::default())?;
 //! let part = &partitions[0];
@@ -43,7 +43,7 @@ mod gpt;
 mod le;
 mod mbr;
 
-pub use positioned_io2 as pio;
+use positioned_io as pio;
 
 /// Table-specific information about a partition.
 #[derive(Debug, Clone, Eq, PartialEq)]
